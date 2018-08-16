@@ -16,7 +16,8 @@ public class Manager extends Employee{
     public Manager(String name,
                    int NINumber,
                    double salary,
-                   double budget)
+                   double budget,
+                   Department department)
     {
         super(name, NINumber, salary);
         this.budget = budget;
@@ -33,11 +34,9 @@ public class Manager extends Employee{
     }
 
     @OneToOne(mappedBy = "manager", fetch = FetchType.LAZY)
-    @Column(name = "department")
     public Department getDepartment() {
         return department;
     }
-
 
     public void setDepartment(Department department) {
         this.department = department;
@@ -50,7 +49,7 @@ public class Manager extends Employee{
 
     public void setAdmins(Set<Admin> admins){
         this.admins = admins;
-    }
+  }
 
 
 }

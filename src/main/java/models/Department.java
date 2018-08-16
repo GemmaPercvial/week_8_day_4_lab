@@ -3,20 +3,19 @@ package models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "department")
+@Table(name = "departments")
 public class Department {
 
     private int id;
     private String title;
     private Manager manager;
 
-    public Department(String title, Manager manager) {
+    public Department(){}
+
+    public Department(String title) {
         this.id = id;
         this.title = title;
-        this.manager = manager;
     }
-
-    public Department(){}
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,7 +37,7 @@ public class Department {
         this.title = title;
     }
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "manager_id", nullable = false)
     public Manager getManager(){
         return manager;
