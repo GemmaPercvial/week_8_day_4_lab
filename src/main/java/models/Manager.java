@@ -8,7 +8,7 @@ import java.util.Set;
 public class Manager extends Employee{
 
     private double budget;
-    private String department;
+    private Department department;
     private Set<Admin> admins;
 
     public Manager(){}
@@ -16,8 +16,7 @@ public class Manager extends Employee{
     public Manager(String name,
                    int NINumber,
                    double salary,
-                   double budget,
-                   String department)
+                   double budget)
     {
         super(name, NINumber, salary);
         this.budget = budget;
@@ -33,12 +32,14 @@ public class Manager extends Employee{
         this.budget = budget;
     }
 
+    @OneToOne(mappedBy = "manager", fetch = FetchType.LAZY)
     @Column(name = "department")
-    public String getDepartment() {
+    public Department getDepartment() {
         return department;
     }
 
-    public void setDepartment(String department) {
+
+    public void setDepartment(Department department) {
         this.department = department;
     }
 

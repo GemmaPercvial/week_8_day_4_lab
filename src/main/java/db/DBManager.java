@@ -1,6 +1,7 @@
 package db;
 
 import models.Admin;
+import models.Department;
 import models.Manager;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
@@ -26,5 +27,18 @@ public class DBManager {
             session.close();
         }
         return results;
+    }
+
+    public static Department getDepartment(Manager manager){
+        session = HibernateUtil.getSessionFactory().openSession();
+        Department department = null;
+
+        try{
+
+        } catch (HibernateException e){
+
+        } finally {
+            session.close()
+        }
     }
 }
